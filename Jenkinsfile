@@ -4,9 +4,8 @@ pipeline {
         stage('Build') { 
             steps {
 	      script {
-	       withDockerContainer(args: '\'-p 8000:5000\', image: 'microblog-image')
-//	       docker.build("microblog-image")
-//	       docker.image("microblog-image").withRun('-p 8000:5000', '--name microblog-con -d')
+	       docker.build("microblog-image")
+	       docker.image("microblog-image").withRun('-p 8000:5000', '--name microblog-con -d')
                   }
             }
 	}
