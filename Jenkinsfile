@@ -5,7 +5,7 @@ pipeline {
             steps {
 	      script {
 	       docker.build("microblog-image")
-	       docker.image("microblog-image").withRun()
+	       docker.image("microblog-image").withRun('-p 8000:5000', '--name microblog-con -d')
                   }
             }
 	}
