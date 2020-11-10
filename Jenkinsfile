@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-	      script {
-	       docker.build("microblog-image")
-                  }
-// 		sh {"docker run --name microblog-con -d -p 8000:5000 microblog-image:latest"}        
+		    script {
+                			docker.build('microblog-image')
+					docker.image('microblog-image').run('-p 8000:5000')
+		    }
+                }
             }
-	}
-                        }
+        }
         post {
             success {
                 echo "Pipeline successful"
         }
 	    failure {
-		 echo "The Pipeline failed :("
-		    }
-	}
-	 }
+		echo "The Pipeline failed :("
+                }
+            }
+}
