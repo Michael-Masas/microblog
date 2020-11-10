@@ -5,8 +5,9 @@ pipeline {
             steps {
 	      script {
 	       docker.build("microblog-image")
-	       docker run --name microblog-con -d -p 8000:5000 microblog-image:latest
                   }
+		sh {"docker run --name microblog-con -d -p 8000:5000 microblog-image:latest"}    
+		    
             }
 	}
                         }
